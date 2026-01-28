@@ -1,0 +1,99 @@
+// Variables (can be imported if we had a shared variables file, 
+// but for component-isolated styles we can reference them or just define specifics)
+// Since we are inside the component, we want to target our specific semantic classes.
+
+.dashboard-header {
+    text-align: center;
+    color: var(--bs-white);
+    margin-bottom: 2rem;
+
+    .lead {
+        color: var(--bs-gray-600); // text-muted
+    }
+}
+
+.filter-card {
+    border: none;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+
+    .filter-input-group {
+
+        .input-group-text,
+        .form-control,
+        .form-select {
+            background-color: var(--bs-dark);
+            color: var(--bs-white);
+            border-color: var(--bs-secondary);
+
+            &::placeholder {
+                color: var(--bs-gray-500);
+            }
+        }
+    }
+}
+
+.clear-btn {
+    width: 100%;
+}
+
+.rating-card {
+    height: 100%;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    border-color: var(--bs-secondary);
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        // Ensure badge and grouping text are styled via classes if needed, 
+        // but utility classes for badges are often fine. 
+        // We'll keep semantic specific overrides here.
+        .grouping-label {
+            color: var(--bs-info);
+            font-size: 0.875rem;
+        }
+    }
+
+    .card-title {
+        color: var(--bs-light);
+    }
+
+    .notes-text {
+        color: var(--bs-gray-600); // text-muted
+        font-size: 0.875rem;
+    }
+
+    .card-footer {
+        background-color: transparent;
+        border-color: var(--bs-secondary);
+    }
+}
+
+.criteria-table {
+    // Inherits table-dark, table-sm, table-borderless via semantic mixins or classes if we used SASS imports,
+    // but here we will apply styles directly to clean up HTML.
+    background-color: var(--bs-dark);
+    color: var(--bs-white);
+
+    th {
+        color: var(--bs-secondary);
+    }
+
+    .rating-percent {
+        font-weight: bold;
+        color: var(--bs-warning);
+    }
+
+    .criteria-desc {
+        color: var(--bs-light);
+        font-size: 0.875rem;
+    }
+}
+
+// No results styling
+.no-results {
+    text-align: center;
+    color: var(--bs-gray-600);
+    margin-top: 3rem;
+}

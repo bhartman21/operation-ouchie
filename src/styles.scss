@@ -1,0 +1,134 @@
+// Custom Variables - CSS Custom Properties for Theming
+:root {
+    // Default Theme: "Night Ops" (Tactical Dark)
+    --body-bg: #121212;
+    --body-color: #e0e0e0;
+    --primary-color: #4e5d6c; // Slate Blue-Grey
+    --secondary-color: #2b3e50;
+    --accent-color: #3fb618; // Success Green
+    --card-bg: #1e1e1e;
+    --card-border: #444;
+    --nav-bg: #1f2933; // Darker slate
+    --hero-bg: url('/assets/images/hero-default.png');
+}
+
+[data-theme="usmc"] {
+    // "Oorah!" Theme (Scarlet & Gold)
+    --body-bg: #2b2b24; // Very Dark Olive
+    --body-color: #fceea7; // Light Gold/Cream
+    --primary-color: #991b1e; // Marine Scarlet
+    --secondary-color: #3e3e32; // Olive Drab
+    --accent-color: #f1c40f; // Marine Gold
+    --card-bg: #36362d;
+    --card-border: #991b1e; // Scarlet Border
+    --nav-bg: #991b1e;
+    --hero-bg: url('/assets/images/hero-oorah.png');
+}
+
+[data-theme="jungle"] {
+    // "Jungle Standard" (Camo)
+    --body-bg: #1a2118; // Deep Jungle Green
+    --body-color: #d1d8d0;
+    --primary-color: #3e4c36; // Camo Green
+    --secondary-color: #2a3324;
+    --accent-color: #8b5a2b; // Earth/Brown
+    --card-bg: #242b20;
+    --card-border: #3e4c36;
+    --nav-bg: #2a3324;
+    --hero-bg: url('/assets/images/hero-jungle.png');
+}
+
+// SCSS Variables for Bootstrap Overrides (Mapped to fallback or static)
+$body-bg: #121212;
+$body-color: #e0e0e0;
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+// Global Styles using CSS Variables
+body {
+    background-color: var(--body-bg);
+    color: var(--body-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dashboard-hero {
+    background-image: var(--hero-bg);
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease;
+
+    .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .backdrop-blur {
+        backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    .card-header {
+        background-color: rgba(0, 0, 0, 0.2); // Semi-transparent dark
+        border-bottom: 1px solid var(--card-border);
+
+        // Add a top accent line
+        border-top: 3px solid var(--accent-color);
+    }
+}
+
+// Button Overrides to use theme colors
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--primary-color), white 10%);
+        border-color: color-mix(in srgb, var(--primary-color), white 10%);
+    }
+}
+
+.form-control {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--body-color);
+
+    &:focus {
+        background-color: var(--card-bg);
+        color: var(--body-color);
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--accent-color), transparent 75%);
+    }
+}
+
+
+// Scrollbar styling
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--body-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
